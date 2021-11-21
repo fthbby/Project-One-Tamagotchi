@@ -18,13 +18,16 @@ body {
     /* flex-direction: column; */
     /* border-radius: 5%; */
     /* flex-wrap: wrap; */
-    display: flex;
+    /* display: flex; */
 }
 
 
-/* .container1 {
-   text-align: center;
-} */
+
+
+.container1 div{
+display:flex;
+justify-content: space-around;
+}
 
 .container2 {
     background-color: lightgreen;
@@ -34,6 +37,7 @@ body {
 .container3 div {
     display: flex;
     justify-content: space-around;
+    padding: 2%
 }
 
 /* #welcome {
@@ -78,3 +82,10 @@ flex: 5;
     border-color: pink;
 }
 
+#age {
+    flex:1;
+}
+
+#name {
+    flex: 4;
+}
