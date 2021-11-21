@@ -4,25 +4,39 @@ body {
     font-family: 'Cute Font', cursive;
 }
 
-.main-div {
+.container1 div, .container2 div, .container3 div {
     background-color: lightgreen;
     border-style: dashed;
     /* display: inline-block; */
-    padding: 10% 20% 20% 20%;
+    /* padding: 10% 20% 20% 20%; */
     /* top: 50%; */
     /* left: 30%; */
-    max-width: 100%;
-    height: auto;
+    /* max-width: 100%;
+    height: auto; */
+    /* display: flex; */
+    /* align-items: center; */
+    /* flex-direction: column; */
+    /* border-radius: 5%; */
+    /* flex-wrap: wrap; */
     display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    position: absolute;
-    border-radius: 5%;
 }
 
 
-#welcome {
+/* .container1 {
+   text-align: center;
+} */
+
+.container2 {
+    background-color: lightgreen;
+    display: flex;
+}
+
+.container3 div {
+    display: flex;
+    justify-content: space-around;
+}
+
+/* #welcome {
     text-align: center;
    border-style: dashed;
    padding-left: 10%;
@@ -35,7 +49,7 @@ body {
     border-radius: 5%;
 }
 
-#play-button {
+/* #play-button {
     padding-left: 10%;
     padding-right: 10%;
     text-align: center;
@@ -44,5 +58,23 @@ body {
     font-size: 50px;
     font-family: 'Cute Font', cursive;
     border-style: solid;
-    border-radius: 3%;
+    border-radius: 3%; */
+} */
+
+
+
+
+#top-box {
+
 }
+
+
+#cat {
+flex: 5;
+}
+
+#left-box {
+    flex: 1;
+    border-color: pink;
+}
+
