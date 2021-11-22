@@ -21,9 +21,6 @@ body {
     /* display: flex; */
 }
 
-
-
-
 .container1 div{
 display:flex;
 justify-content: space-around;
@@ -48,10 +45,10 @@ justify-content: space-around;
     /* position: absolute; */
     /* top: 20%; */
     /* left: 30%; */
-    font-size: 150px;
+    /* font-size: 150px;
     background-color: pink;
     border-radius: 5%;
-}
+} */
 
 /* #play-button {
     padding-left: 10%;
@@ -62,30 +59,29 @@ justify-content: space-around;
     font-size: 50px;
     font-family: 'Cute Font', cursive;
     border-style: solid;
-    border-radius: 3%; */
+    border-radius: 3%;
 } */
 
 
 
-
-#top-box {
-
+#age {
+    flex: 1;
 }
 
+#name {
+    flex: 4;
+}
 
 #cat {
 flex: 5;
 }
 
-#left-box {
-    flex: 1;
+#stats-box {
+    flex: 2;
     border-color: pink;
 }
 
-#age {
-    flex:1;
-}
-
-#name {
-    flex: 4;
+#action-box img{
+    width:100%;
+    max-width:100px;
 }
