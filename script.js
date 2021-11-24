@@ -3,19 +3,34 @@ console.log ('hello')
 
 //------- attempt to create the stats bar buttons wtih classes ----//
 
+
 class StatsBar {
-    constructor(barSize, color) {
-        this.barSize = barSize;
+    constructor(x,y,w,h,maxBarSize,color) {
+        this.x =x;
+        this.y = y;
+        this.w = w;
+        this.h = h;
+        this.maxBarSize = maxBarSize;
         this.color = color;
+        this.maxWidth = w;
+        this.energy = maxBarSize;
+        this.hunger = maxBarSize;
+        this.boredom = maxBarSize;
 
     }
+
 }
 
 
-const energy = new StatsBar(100, 'green')
-const hunger = new StatsBar(0,'yellow')
-const boredom = new StatsBar(0,'orange')
+const energyBar = new StatsBar(20,20,200,30,10000, 'green')
 
-console.log(energy)
-console.log(hunger)
-console.log(boredom)
+
+
+
+const statsBar = document.getElementsByClassName('stats-bar')[0];
+
+setInterval(() => {
+    const computedStyle = getComputedStyle(statsBar);
+    const width = parseFloat(computedStyle.getPropertyValue('--width')) || 0
+    statsBar.style.setProperty('--width', width +.05)
+}, (5));
