@@ -65,22 +65,21 @@ function intervalStart (chooseBar,interval) {
 
 intervalStart(boredBar, 5)
 intervalStart(hungerBar, 1)
-intervalStart(energyBar, 10)
+intervalStart(energyBar, 9)
 
 
 
 // -------- this is the counter for age function --------//
-const counter  = document.querySelector('.counter')
-const speed = 2000; //-------this controls the age speed-----/
+const counter  = document.querySelector('#counter')
+const speed = 3000; //-------this controls the age speed-----/
 
 const updateCount = () => {
-    const target = +counter.getAttribute('data-target');
-    const count = +counter.innerText;
+    const winningAge = +counter.getAttribute('data-target');
+    const currentAge = +counter.innerText;
+    const inc = winningAge / speed;
 
-    const inc = target / speed;
-
-    if(count < target) {
-        counter.innerText = count + inc;
+    if(currentAge< winningAge) {
+        counter.innerText = (currentAge) + inc;
         setTimeout(updateCount, 1);
     }else {
         //----game over... you win!//
@@ -88,3 +87,21 @@ const updateCount = () => {
 }
 
 updateCount();
+
+//--------------need to revist this counter.
+
+
+
+
+const feedButton =document.querySelector('#feed');
+const playButton = document.querySelector('#play');
+const sleepButton = document.querySelector('#sleep');
+
+feedButton.addEventListener('click', () => {
+    console.log('clickedTheFeedsAgain');
+    const computedStyle = getComputedStyle(hungerBar);
+    const width = parseFloat(computedStyle.getPropertyValue('--width')) || 0;
+    hungerBar.style.setProperty('--width', width - 10)
+})
+
+
