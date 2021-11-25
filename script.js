@@ -97,11 +97,18 @@ const feedButton =document.querySelector('#feed');
 const playButton = document.querySelector('#play');
 const sleepButton = document.querySelector('#sleep');
 
+
+
 feedButton.addEventListener('click', () => {
-    console.log('clickedTheFeedsAgain');
-    const computedStyle = getComputedStyle(hungerBar);
-    const width = parseFloat(computedStyle.getPropertyValue('--width')) || 0;
-    hungerBar.style.setProperty('--width', width - 10)
+    clickAction();
 })
 
 
+const clickAction = () => {
+    console.log('clickedTheFeedsAgain');
+    const computedStyle = getComputedStyle(hungerBar);
+    const width = parseFloat(computedStyle.getPropertyValue('--width')) || 0;
+    if (width >=0){
+    hungerBar.style.setProperty('--width', width - 10);
+    }
+}

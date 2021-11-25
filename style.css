@@ -141,7 +141,7 @@ body {
     top: .13em;
     bottom: .3em;
     width: calc(var(--width, 0) * 1%); 
-    min-width: 2rem;
+    min-width: .1rem;
     max-width: calc(100% - .3em);
     background-color: pink;
     border-radius: 1.5em;
