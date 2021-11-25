@@ -100,15 +100,24 @@ const sleepButton = document.querySelector('#sleep');
 
 
 feedButton.addEventListener('click', () => {
-    clickAction();
+    console.log('clickedTheFeedsAgain');
+    clickAction(hungerBar);
 })
 
+playButton.onclick = () => {
+    console.log('clicked da play');
+    clickAction(boredBar);
+}
 
-const clickAction = () => {
-    console.log('clickedTheFeedsAgain');
-    const computedStyle = getComputedStyle(hungerBar);
+sleepButton.onclick = () => {
+    console.log('clicked the sleep');
+    clickAction(energyBar);
+}
+
+const clickAction = (chooseBar) => {
+    const computedStyle = getComputedStyle(chooseBar);
     const width = parseFloat(computedStyle.getPropertyValue('--width')) || 0;
     if (width >=0){
-    hungerBar.style.setProperty('--width', width - 10);
+    chooseBar.style.setProperty('--width', width - 10);
     }
 }
