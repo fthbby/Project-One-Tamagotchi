@@ -50,6 +50,9 @@ const energyBar = document.getElementById('energy-bar');
 // }, (5));
 
 
+
+
+// -------- this is the  stats bar interval code ------------//
 function intervalStart (chooseBar,interval) {
     setInterval(() => {
         const computedStyle = getComputedStyle(chooseBar);
@@ -63,3 +66,25 @@ function intervalStart (chooseBar,interval) {
 intervalStart(boredBar, 5)
 intervalStart(hungerBar, 1)
 intervalStart(energyBar, 10)
+
+
+
+// -------- this is the counter for age function --------//
+const counter  = document.querySelector('.counter')
+const speed = 2000; //-------this controls the age speed-----/
+
+const updateCount = () => {
+    const target = +counter.getAttribute('data-target');
+    const count = +counter.innerText;
+
+    const inc = target / speed;
+
+    if(count < target) {
+        counter.innerText = count + inc;
+        setTimeout(updateCount, 1);
+    }else {
+        //----game over... you win!//
+    }
+}
+
+updateCount();
