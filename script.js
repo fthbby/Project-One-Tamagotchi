@@ -71,7 +71,7 @@ intervalStart(energyBar, 9)
 
 // -------- this is the counter for age function --------//
 const counter  = document.querySelector('#counter')
-const speed = 3000; //-------this controls the age speed-----/
+const speed = 4000; //-------this controls the age speed-----/
 
 const updateCount = () => {
     const winningAge = +counter.getAttribute('data-target');
@@ -91,12 +91,11 @@ updateCount();
 //--------------need to revist this counter.
 
 
-
+//----------below are the event listeners for the action buttons
 
 const feedButton =document.querySelector('#feed');
 const playButton = document.querySelector('#play');
 const sleepButton = document.querySelector('#sleep');
-
 
 
 feedButton.addEventListener('click', () => {
