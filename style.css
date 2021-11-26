@@ -1,25 +1,10 @@
 
 body {
-    background-color: darkgray;
+    background-color: lightgreen;
     font-family: 'Cute Font', cursive;
+
 }
 
-.container1 div, .container2, .container3 div {
-    background-color: lightgreen;
-    /* border-style: dashed; */
-    /* display: inline-block; */
-    /* padding: 10% 20% 20% 20%; */
-    /* top: 50%; */
-    /* left: 30%; */
-    /* max-width: 100%;
-    height: auto; */
-    /* display: flex; */
-    /* align-items: center; */
-    /* flex-direction: column; */
-    /* border-radius: 5%; */
-    /* flex-wrap: wrap; */
-    /* display: flex; */
-}
 
 .container1 div{
 display:flex;
@@ -38,8 +23,8 @@ justify-content: space-around;
 .container3 div {
     display: flex;
     padding: 2%;
-    /* position:absolute; */
-    bottom: 25%;
+    position:absolute;
+    bottom: 10%;
     justify-content: space-around;
     width:100%;
     height:130px;
@@ -80,20 +65,19 @@ justify-content: space-around;
     flex: 3;
 }
 
-.catContainer {
-flex: 5;
-
-background:white;
-height: 400px;
-}
-
 /* ----------start of cat-------------------- */
+
+.catContainer {
+    /* display: flex; */
+    /* height: 400px; */
+    /* background-color: white; */
+}
 
 .cat {
     position: absolute;
-    bottom: 100px;
-    right: 400px;
-
+    bottom: 30%;
+    right: 35%;
+    
 }
 
 .catHead {
@@ -226,7 +210,7 @@ height: 400px;
     box-shadow: 45px 0 white;
 }
 
-.bubble {
+/* .bubble {
     height: 20px;
     width: 20px;
     background-color: rgba(255,255,255,0.4);
@@ -235,7 +219,7 @@ height: 400px;
     top: 20px;
     border-radius: 50px 50px 50px 5px;
     animation: bubble-scale 2s infinite;
-}
+} */
 
 /* @keyframes bubble-scale {
     50% {
@@ -280,8 +264,8 @@ height: 400px;
 }
 
 body {
-    /* padding: 0;
-    margin: 0; */
+    padding: 0;
+    margin: 0;
 }
 
 #hunger-bar {
@@ -290,7 +274,8 @@ body {
     height: 2em;
     background-color: grey;
     border-radius: 1.5em;
-    color: lightgreen
+    color: white;
+    
 }
 
 #hunger-bar::before{
@@ -317,7 +302,7 @@ body {
     height: 2em;
     background-color: grey;
     border-radius: 1.5em;
-    color: lightgreen
+    color:white;
 }
 
 #bored-bar::before{
@@ -343,7 +328,7 @@ body {
     height: 2em;
     background-color: grey;
     border-radius: 1.5em;
-    color: lightgreen
+    color:white;
 }
 
 #energy-bar::before{

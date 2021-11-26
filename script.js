@@ -61,11 +61,21 @@ function intervalStart (chooseBar,interval) {
     }, (interval));
 }
 
+//-------- need to create different interval for energy... needs to go down --//
+
+function intervalStartReverse (chooseBar, interval){
+    setInterval(() => {
+        const computedStyle = getComputedStyle(chooseBar);
+        const width = parseFloat(computedStyle.getPropertyValue('--width'));
+        chooseBar.style.setProperty('--width',width -.05)
+    }, (interval));
+}
+
 // why are the numbers opposite??? isnt higher number supposed to be faster?? need to figure this one
 
 intervalStart(boredBar, 5)
 intervalStart(hungerBar, 1)
-intervalStart(energyBar, 9)
+intervalStartReverse(energyBar, 9)
 
 
 
@@ -110,7 +120,7 @@ playButton.onclick = () => {
 
 sleepButton.onclick = () => {
     console.log('clicked the sleep');
-    clickAction(energyBar);
+    clickActionNegative(energyBar);
 }
 
 const clickAction = (chooseBar) => {
@@ -118,5 +128,13 @@ const clickAction = (chooseBar) => {
     const width = parseFloat(computedStyle.getPropertyValue('--width')) || 0;
     if (width >=0){
     chooseBar.style.setProperty('--width', width - 10);
+    }
+}
+
+const clickActionNegative = (chooseBar) => {
+    const computedStyle = getComputedStyle(chooseBar);
+    const width = parseFloat(computedStyle.getPropertyValue('--width')) || 0;
+    if (width >=0){
+    chooseBar.style.setProperty('--width', width + 10);
     }
 }
