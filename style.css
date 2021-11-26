@@ -340,7 +340,7 @@ body {
     top: .13em;
     bottom: .3em;
     width: calc(var(--width, 0) * 1%); 
-    min-width: 1rem;
+    /* min-width: .01rem; */
     max-width: calc(100% - .3em);
     background-color: pink;
     border-radius: 1.5em;
