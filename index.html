@@ -13,19 +13,27 @@
 <script src="script.js" async defer></script>
 </head>
 <body>
+    <div class="welcome-page">
+        <h1>Welcome to cat Tomagatchi!</h1>
+        <p>Keep your cat fed, make sure he doesnt get too bored, and don't let his energy run low!
+        <br>
+        Name your cat to begin!
+        </p>
+        <form class ='welcome-start'>
+            <label for ='name'>Name:</label>
+            <input type='text' class ='catName' value ='kitty' required>
+            <button class='gameStartButton' type ='submit'>Enter</button>
+        </form>
+    </div>
+
 <main>
-    <!-- <div class= 'welcome-page'> -->
-        <!-- <div id ='welcome'> Welcome!</div>
 
-        <button id = 'play-button'> Click here to enter</button> -->
-
-    <!-- </div> -->
    
     <div class ='container1'>
         <div>
-            <div id= 'counter' data-target='10'>0</div>
+            <div id= 'counter'>0</div>
 
-            <div id ='name-box'><h1>insert name here </h1></div>
+            <div id ='name-box'></div>
         </div>
     </div>
 
@@ -53,6 +61,7 @@
            <div class ='cat'>
                <div class="catHead"></div> 
                 <div class ='ear'></div>
+                <div class="earInside"></div>
                 <div class="eye"></div>
                 <div class="mouth"> </div>
                 <div class="nose"></div>

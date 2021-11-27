@@ -4,6 +4,11 @@ let catsHunger = 0;
 let catsBoredom = 0;
 let catsEnergy = 0;
 
+// const $welcomeStart = $('.welcome-start');
+// const $welcomePage = $('.welcome-page');
+
+// const $welcomeStart = $('.welcome-start');
+// const $welcomePage = $('.welcome-page');
 
 const boredBar = document.getElementById('bored-bar');
 const hungerBar = document.getElementById('hunger-bar');
@@ -55,7 +60,7 @@ const counter  = document.querySelector('#counter')
 
 let count = 0;
 setInterval(() => {
-    if (count <= 10){
+    if (count <= 9){
         count++;
         counter.innerText = count;
     }
@@ -101,3 +106,20 @@ const clickActionNegative = (chooseBar) => {
     chooseBar.style.setProperty('--width', width + 10);
     }
 }
+
+
+
+
+const welcomePage = document.querySelector('.welcome-page');
+const welcomeStart = document.querySelector('.welcome-start')
+const nameBox = document.getElementById('#name-box');
+const catName = document.getElementsByClassName('.catName');
+
+const gameStartButton = document.querySelector('.gameStartButton')
+
+gameStartButton.addEventListener('click', function(){
+    welcomePage.style.display = 'none';
+    welcomePage.style.visibility = 'hidden';
+    nameBox.innerHTML=catName; //-----need to revist this
+})
+
