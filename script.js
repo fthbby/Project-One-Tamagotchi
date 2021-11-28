@@ -4,11 +4,6 @@ let catsHunger = 0;
 let catsBoredom = 0;
 let catsEnergy = 0;
 
-// const $welcomeStart = $('.welcome-start');
-// const $welcomePage = $('.welcome-page');
-
-// const $welcomeStart = $('.welcome-start');
-// const $welcomePage = $('.welcome-page');
 
 const boredBar = document.getElementById('bored-bar');
 const hungerBar = document.getElementById('hunger-bar');
@@ -49,22 +44,24 @@ function intervalStartReverse (chooseBar, interval){
 
 
 // why are the numbers opposite??? isnt higher number supposed to be faster?? need to figure this one
-
-intervalStart(boredBar, 5)
-intervalStart(hungerBar, 1)
-intervalStartReverse(energyBar, 9)
+//----- moving this one to the start function a the bottom ---//
+// intervalStart(boredBar, 5)
+// intervalStart(hungerBar, 1)
+// intervalStartReverse(energyBar, 9)
 
 
 // -------- this is the counter for age function --------//
 const counter  = document.querySelector('#counter')
 
-let count = 0;
+let count = 0; //----- maybe move this one to the top.
+function startCount(count){
 setInterval(() => {
     if (count <= 9){
         count++;
         counter.innerText = count;
     }
 }, 1500); //------ this changes speed of counter..
+}
 
 
 
@@ -109,6 +106,13 @@ const clickActionNegative = (chooseBar) => {
 
 
 
+function playGame(){
+    startCount(0); //-------this one starts the counter
+    intervalStart(boredBar, 5)
+    intervalStart(hungerBar, 1)
+    intervalStartReverse(energyBar, 9)
+    clearWelcomePage();
+}
 
 const welcomePage = document.querySelector('.welcome-page');
 const welcomeStart = document.querySelector('.welcome-start')
@@ -117,9 +121,21 @@ const catName = document.getElementsByClassName('.catName');
 
 const gameStartButton = document.querySelector('.gameStartButton')
 
-gameStartButton.addEventListener('click', function(){
-    welcomePage.style.display = 'none';
-    welcomePage.style.visibility = 'hidden';
-    nameBox.innerHTML=catName; //-----need to revist this
-})
+// const $gameStartButton = $('.gameStartButton');
+// $welcomePage = $('.welcome-page');
 
+function clearWelcomePage(){
+    $('.welcome-page').css('display','none');
+}
+
+console.log(nameBox)
+
+
+// $gameStartButton.on('submit',playGame());
+
+gameStartButton.addEventListener('click', function(e){
+    if (e.target.innerText ==='Enter'){
+        playGame();
+        console.log('hello')
+    }
+})
