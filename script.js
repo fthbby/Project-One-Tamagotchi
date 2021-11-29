@@ -1,4 +1,6 @@
-
+let catsInfo = {
+    name: '',
+}
 
 let catsHunger = 0;
 let catsBoredom = 0;
@@ -92,6 +94,7 @@ const clickAction = (chooseBar) => {
     const width = parseFloat(computedStyle.getPropertyValue('--width')) || 0;
     if (width >=0){
     chooseBar.style.setProperty('--width', width - 10);
+    console.log(width)
     }
     console.log(catsHunger)
 }
@@ -106,6 +109,14 @@ const clickActionNegative = (chooseBar) => {
 
 
 
+// catsInfo.name = $('.catsName').val();
+// $('#name-box').text(catsInfo.name);
+
+
+
+
+
+
 function playGame(){
     startCount(0); //-------this one starts the counter
     intervalStart(boredBar, 5)
@@ -116,13 +127,11 @@ function playGame(){
 
 const welcomePage = document.querySelector('.welcome-page');
 const welcomeStart = document.querySelector('.welcome-start')
-const nameBox = document.getElementById('#name-box');
-const catName = document.getElementsByClassName('.catName');
-
+const nameBox = document.querySelector('#name-box');
+const catName = document.querySelector('#catName');
 const gameStartButton = document.querySelector('.gameStartButton')
 
-// const $gameStartButton = $('.gameStartButton');
-// $welcomePage = $('.welcome-page');
+
 
 function clearWelcomePage(){
     $('.welcome-page').css('display','none');
@@ -130,12 +139,35 @@ function clearWelcomePage(){
 
 console.log(nameBox)
 
+// gameStartButton.addEventListener('submit', playGame())
 
-// $gameStartButton.on('submit',playGame());
 
 gameStartButton.addEventListener('click', function(e){
     if (e.target.innerText ==='Enter'){
+        // nameBox.innerText = getCatName
+        addNameToGame();
         playGame();
-        console.log('hello')
     }
 })
+
+// gameStartButton.addEventListener('submit',function(e){
+//     if(!isValid){
+//         e.preventDefault();
+//     }
+//     playGame();
+//     console.log('this one works')
+// })
+
+// let $nameBox = $('#name-box')
+// let nameBox1 = document.querySelector('#name-box')
+// console.log($($nameBox).innerText)
+
+const getCatName = document.getElementById('catName').value;
+
+
+function addNameToGame(){
+
+    nameBox.innerText = getCatName;
+}
+
+console.log(getCatName)
