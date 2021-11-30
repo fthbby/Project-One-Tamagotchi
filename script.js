@@ -4,13 +4,9 @@ let cat = {
     name:'',
     hunger: 0,
     boredom: 0,
-
+    energy: 100,
 }
-// let catsHunger = 0;
-// let catsBoredom = 0;
-// let catsEnergy = 0;
 
-// let interval = 0;
 
 const boredBar = document.getElementById('bored-bar-progress');
 const energyBar = document.getElementById('energy-bar-progress');
@@ -105,7 +101,7 @@ playButton.onclick = () => {
 sleepButton.onclick = () => {
     console.log('clicked the sleep');
     resetEnergy();
-    clickActionNegative(energyBar);
+    // clickActionNegative(energyBar);
 }
 
 //--------------------
@@ -118,6 +114,9 @@ function intervalStartHunger(){
         $('#hunger-bar').css('width', cat.hunger +'%');
         if (cat.hunger >= 100){
             console.log('this works')
+            clearInterval(hungerBarProgress);
+            cat.hunger = 0;
+
             //------game over here
         }
     }, 100)
@@ -129,10 +128,31 @@ function intervalStartBored(){
         $('#bored-bar').css('width', cat.boredom +'%');
         if (cat.boredom >= 100){
             console.log('this bored works')
+            clearInterval(boredBarProgress);
+            cat.bored =0;
+            showLoserPage();
             //------game over here
+        }
+    }, 50)
+}
+
+function intervalStartEnergy(){
+    energyBarProgress = setInterval(function () {
+        cat.energy--;
+        $('#energy-bar').css('width', cat.energy+'%');
+        if (cat.energy <= 0){
+            console.log('this energy. works')
+            //------game over here
+            // cat.energy = 1;
+            clearInterval(intervalStartEnergy)
+            clearInterval(intervalStartHunger)
+            clearInterval(intervalStartBored)
+            clearInterval(energyBarProgress);
+
         }
     }, 100)
 }
+
 
 function resetHunger(){
     cat.hunger =0;
@@ -150,6 +170,13 @@ function resetBored(){
     intervalStartBored() // --- test
     }
     
+
+    function resetEnergy(){
+        cat.energy = 100;
+        clearInterval(energyBarProgress);
+        $('#energy-bar').css('width',cat.energy+'%');
+        intervalStartEnergy();
+    }
     
   
 //----------------------
@@ -165,60 +192,67 @@ const clickActionNegative = (chooseBar) => {
 
 
 
-
+console.log($('.loser-page'))
 
 
 function playGame(){
+    clearLoserPage();
     startCount(0); //-------this one starts the counter,
     intervalStartHunger();
     intervalStartBored();
-    // intervalStart(boredBar, 60);
-    // intervalStartReverse(energyBar, 80);
-    // clearWelcomePage();
+    intervalStartEnergy();
+    clearWelcomePage();
 }
 
 const welcomePage = document.querySelector('.welcome-page');
-const welcomeStart = document.querySelector('.welcome-start')
+// const welcomeStart = document.querySelector('.welcome-start')
 const nameBox = document.querySelector('#name-box');
 const catName = document.querySelector('#catName');
 const gameStartButton = document.querySelector('.gameStartButton')
 
 
 
-// function clearWelcomePage(){
-//     $('.welcome-page').css('display','none');
-// }
+function clearWelcomePage(){
+    $('.welcome-page').css('display','none');
+}
 
+function clearLoserPage() {
+    $('.loser-page').css('display','none');
+}
+function showLoserPage() {
+    $('.loser-page').css('display','inline');
+}
 
 // gameStartButton.addEventListener('submit', playGame())
 
 
 gameStartButton.addEventListener('click', function(e){
-    if (e.target.innerText ==='Enter'){
+    if (e.target.innerText =='Enter'){
         cat.name = $('#catName').val();
         $('#name-box').text(cat.name)
         // addNameToGame();
+        clearInterval(intervalStartEnergy)
+        clearInterval(intervalStartHunger)
+        clearInterval(intervalStartBored)
         playGame();
     }
 })
 
-// gameStartButton.addEventListener('submit',function(e){
-//     if(!isValid){
-//         e.preventDefault();
-//     }
-//     playGame();
-//     console.log('this one works')
-// })
+const tryAgainButton = document.querySelector('.tryAgainButton')
 
-// let $nameBox = $('#name-box')
-// let nameBox1 = document.querySelector('#name-box')
-// console.log($($nameBox).innerText)
+console.log(tryAgainButton)
 
-// const getCatName = document.getElementById('catName').value;
-// const $getCatName = $('#catName');
+tryAgainButton.addEventListener('click', function(e){
+    if (e.target.innerText =='Try'){
+        console.log('thisclick works tho');
+        clearLoserPage();
+        $('.welcome-page').css('display','flex');
+        clearInterval(intervalStartEnergy)
+        clearInterval(intervalStartHunger)
+        clearInterval(intervalStartBored)
 
-// function addNameToGame(){
-//     $('#name-box').text(getCatName)
-//     // nameBox.innerText = getCatName;
-// }
+    }
+}
+)
+
 

@@ -444,7 +444,7 @@ body {
     color:white;
 } */
 
-#energy-bar-progress{
+/* #energy-bar-progress{
     display: flex;
     align-items: center;
     position: absolute;
@@ -452,20 +452,24 @@ body {
     top: .13em;
     bottom: .3em;
     width: 100%; 
-    /* min-width: .01rem; */
+    min-width: .01rem;
     max-width: calc(100% - .3em);
     background-color: pink;
     border-radius: 1.5em;
     padding: .4em;
     font-size: 30px;
+} */
+
+#energy-bar{
+    width: 100%; 
+    max-width: calc(100% -.3em);
 }
 
 
 
 
 
-
-/* .welcome-page {
+.welcome-page {
     position: absolute;
     z-index: 1;
     height: 100%;
@@ -475,9 +479,24 @@ body {
     justify-content: center;
     background-color: lightgreen;
     text-align: center;
-} */
-/* 
+}
+
+
 .loser-page {
+    position: absolute;
+    z-index: 1;
+    height: 100%;
+    width:100%;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    background-color: lightgreen;
+    text-align: center;
+}
+
+
+
+/* .winner-page {
     position: absolute;
     /* z-index: 1;
     height: 100%;
@@ -487,18 +506,4 @@ body {
     justify-content: center;
     background-color: lightgreen;
     text-align: center;
-}
-*/
-
-
-.winner-page {
-    position: absolute;
-    /* z-index: 1; */
-    height: 100%;
-    width:100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background-color: lightgreen;
-    text-align: center;
-} */
+}  */
