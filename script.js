@@ -10,31 +10,67 @@ let catsBoredom = 0;
 let catsEnergy = 0;
 
 
-const boredBar = document.getElementById('bored-bar');
-const hungerBar = document.getElementById('hunger-bar');
-const energyBar = document.getElementById('energy-bar');
-
+const boredBar = document.getElementById('bored-bar-progress');
+// const hungerBar = document.getElementById('hunger-bar');
+const energyBar = document.getElementById('energy-bar-progress');
+const hungerBar = document.getElementById('hunger-bar-progress');
 
 // -------- this is the  stats bar interval code ------------//
-function intervalStart (chooseBar,interval) {
+// function intervalStart (chooseBar,interval) {
     
-    setInterval(() => {
-        const computedStyle = getComputedStyle(chooseBar);
-        const width = parseFloat(computedStyle.getPropertyValue('--width')) || 0;
-        chooseBar.style.setProperty('--width', width +.05);
-        // console.log(width);
-        pushTo = width;
-        // console.log(width);
-            // pushTo = parseFloat(width);
-        // console.log('amount for hungs:' + pushTo);
+//     setInterval(() => {
+//         const computedStyle = getComputedStyle(chooseBar);
+//         const width = parseFloat(computedStyle.getPropertyValue('--width')) || 0;
+//         chooseBar.style.setProperty('--width', width +.05);
+//         console.log(width)
+//         // console.log(width);
+//         // pushTo = width;
+//         // console.log(width);
+//             // pushTo = parseFloat(width);
+//         // console.log('amount for hungs:' + pushTo);
        
-    }, (interval));
-    // pushTo = width;
-    // console.log(pushTo);
+//     }, (interval));
+//     // pushTo = width;
+//     // console.log(pushTo);
   
 
-}
+// }
 
+// function intervalStart (interval) {
+//     const computedStyle = getComputedStyle(hungerBar);
+//     const width = parseFloat(computedStyle.getPropertyValue('--width')) || 0;
+//     if (width<'100'){
+//     setInterval(() => {
+//         const computedStyle = getComputedStyle(hungerBar);
+//         const width = parseFloat(computedStyle.getPropertyValue('--width')) || 0;
+//         hungerBar.style.setProperty('--width', width +.05);
+//         console.log(width)
+        
+       
+//     }, (interval));
+//     } else {
+//         console.log('break')
+//     }
+//     // pushTo = width;
+//     // console.log(pushTo);
+
+// }
+
+
+function intervalStart(chooseBar, speed){
+    let width = 1;
+    const rate = () => {
+        if (width>=100){
+            console.log('over 100')
+            clearInterval(interval);
+        } else {
+            width++;
+            chooseBar.style.width = `${width}%`
+        }
+    };
+
+    const interval = setInterval(rate, speed);
+}
 //-------- need to create different interval for energy... needs to go down --//
 
 function intervalStartReverse (chooseBar, interval){
@@ -58,7 +94,7 @@ function intervalStartReverse (chooseBar, interval){
 // -------- this is the counter for age function --------//
 const counter  = document.querySelector('#counter')
 
-let count = 0; //----- maybe move this one to the top.
+// let count = 0; //----- maybe move this one to the top.
 function startCount(count){
 setInterval(() => {
     if (count <= 9){
@@ -121,9 +157,9 @@ const clickActionNegative = (chooseBar) => {
 
 
 function playGame(){
-    startCount(0); //-------this one starts the counter
-    intervalStart(boredBar, 5)
-    intervalStart(hungerBar, 1)
+    startCount(0); //-------this one starts the counter,
+    intervalStart(hungerBar, 50)
+    intervalStart(boredBar, 60)
     intervalStartReverse(energyBar, 9)
     clearWelcomePage();
 }
@@ -136,9 +172,9 @@ const gameStartButton = document.querySelector('.gameStartButton')
 
 
 
-function clearWelcomePage(){
-    $('.welcome-page').css('display','none');
-}
+// function clearWelcomePage(){
+//     $('.welcome-page').css('display','none');
+// }
 
 console.log(nameBox)
 
@@ -174,4 +210,3 @@ gameStartButton.addEventListener('click', function(e){
 //     // nameBox.innerText = getCatName;
 // }
 
-console.log(getCatName)
