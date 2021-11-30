@@ -12,6 +12,7 @@ justify-content: space-around;
 }
 
 .container2 {
+    left: 20px;
     background-color: lightgreen;
     display: flex;
     position:relative;
@@ -230,7 +231,7 @@ justify-content: space-around;
     border-radius: 20px 0 0 20px;
 }
 
-
+/* 
 .body:before {
     content: '';
     position: absolute;
@@ -241,7 +242,7 @@ justify-content: space-around;
     bottom: 0;
     left: 22px;
     box-shadow: 45px 0 white;
-}
+} */
 
 /* .bubble {
     height: 20px;
@@ -263,25 +264,73 @@ justify-content: space-around;
 /* ---------end of cat-------------------- */
 
 
-#stats-box {
+/* #stats-box {
     flex: 2;
     border-color: pink;
-}
+} */
 
 #action-box img{
     width:100%;
     max-width:100px;
 }
 
+.stats-box{
+    position: relative;
+    width: 400px;
+    height: 2em;
+    background-color: grey;
+    border-radius: 1.5em;
+    color: white;
+
+}
+
+.stats-bar {
+    display: flex;
+    align-items: center;
+    padding: .4em;
+    font-size: 30px;
+    border-style: solid 0.1px;
+    width: 400px;
+    height: .8em !important;
+    min-width: .05rem;
+    max-width: calc(100% - .3em);
+    border-radius: 1.5em;
+    color: white; 
+    width: 0%;
+    height: 100%;
+    background-color: pink;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+
+    position: absolute;
+  
+}
+
+#hunger-bar {
+    bottom: 10px;
+}
+
+/* #bar-text {
+    font-size: 36px;
 
 
-/* .stats-bar {
-    background-color:pink;
-    border: 4px;
-    border-style: solid;
-    border-radius: 15px;
-    text-align: center;
+} */
 
+/* #hunger-bar-progress{
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left: .13em;
+    top: .13em;
+    bottom: .3em;
+    width: 1%; 
+    min-width: .1rem;
+    max-width: calc(100% - .3em);
+    background-color: pink;
+    border-radius: 1.5em;
+    padding: .4em;
+    font-size: 30px;
 } */
 
 
@@ -301,7 +350,7 @@ body {
     margin: 0;
 }
 
-#hunger-bar {
+/* #hunger-bar {
     position: relative;
     width: 400px;
     height: 2em;
@@ -309,7 +358,7 @@ body {
     border-radius: 1.5em;
     color: white;
     
-}
+} */
 
 /* #hunger-bar::before{
     content: attr(data-label);
@@ -345,31 +394,30 @@ body {
     font-size: 30px;
 } */
 
-#hunger-bar-progress{
+/* #hunger-bar-progress{
     display: flex;
     align-items: center;
     position: absolute;
     left: .13em;
     top: .13em;
     bottom: .3em;
-    width: 0%; 
+    width: 1%; 
     min-width: .1rem;
     max-width: calc(100% - .3em);
     background-color: pink;
     border-radius: 1.5em;
     padding: .4em;
     font-size: 30px;
-    font-color: black;
-}
+} */
 
-#bored-bar {
+/* #bored-bar {
     position: relative;
     width: 400px;
     height: 2em;
     background-color: grey;
     border-radius: 1.5em;
     color:white;
-}
+} */
 
 #bored-bar-progress{
     display: flex;
@@ -387,14 +435,14 @@ body {
     font-size: 30px;
 }
 
-#energy-bar {
+/* #energy-bar {
     position: relative;
     width: 400px;
     height: 2em;
     background-color: grey;
     border-radius: 1.5em;
     color:white;
-}
+} */
 
 #energy-bar-progress{
     display: flex;
@@ -416,8 +464,8 @@ body {
 
 
 
-/* 
-.welcome-page {
+
+/* .welcome-page {
     position: absolute;
     z-index: 1;
     height: 100%;

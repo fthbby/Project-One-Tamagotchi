@@ -1,76 +1,46 @@
-// let catsInfo = {
-//     name: '',
-// }
+
 
 let cat = {
     name:'',
-}
-let catsHunger = 0;
-let catsBoredom = 0;
-let catsEnergy = 0;
+    hunger: 0,
+    boredom: 0,
 
+}
+// let catsHunger = 0;
+// let catsBoredom = 0;
+// let catsEnergy = 0;
+
+// let interval = 0;
 
 const boredBar = document.getElementById('bored-bar-progress');
-// const hungerBar = document.getElementById('hunger-bar');
 const energyBar = document.getElementById('energy-bar-progress');
-const hungerBar = document.getElementById('hunger-bar-progress');
+const hungerBar = document.getElementById('hunger-bar');
 
-// -------- this is the  stats bar interval code ------------//
-// function intervalStart (chooseBar,interval) {
-    
-//     setInterval(() => {
-//         const computedStyle = getComputedStyle(chooseBar);
-//         const width = parseFloat(computedStyle.getPropertyValue('--width')) || 0;
-//         chooseBar.style.setProperty('--width', width +.05);
-//         console.log(width)
-//         // console.log(width);
-//         // pushTo = width;
-//         // console.log(width);
-//             // pushTo = parseFloat(width);
-//         // console.log('amount for hungs:' + pushTo);
-       
-//     }, (interval));
-//     // pushTo = width;
-//     // console.log(pushTo);
-  
+const $hungerBar = $('#hunger-bar');
+const $boredBar = $('#bored-bar');
+const $energyBar = $('#energy-bar');
 
+let hungerBarProgress = '';
+let boredBarProgress= '';
+let energyBarProgress= '';
+
+
+//------this is the stats bars interval codes-------//
+
+// function intervalStart(chooseBar, speed){
+//     let width = 1;
+//     const rate = () => {
+//         if (width>=100){
+//             console.log('over 100')
+//             clearInterval(interval);
+//         } else {
+//             width++;
+//             chooseBar.style.width = `${width}%`
+//         }
+//     };
+
+//     const interval = setInterval(rate, speed);
 // }
-
-// function intervalStart (interval) {
-//     const computedStyle = getComputedStyle(hungerBar);
-//     const width = parseFloat(computedStyle.getPropertyValue('--width')) || 0;
-//     if (width<'100'){
-//     setInterval(() => {
-//         const computedStyle = getComputedStyle(hungerBar);
-//         const width = parseFloat(computedStyle.getPropertyValue('--width')) || 0;
-//         hungerBar.style.setProperty('--width', width +.05);
-//         console.log(width)
-        
-       
-//     }, (interval));
-//     } else {
-//         console.log('break')
-//     }
-//     // pushTo = width;
-//     // console.log(pushTo);
-
-// }
-
-
-function intervalStart(chooseBar, speed){
-    let width = 1;
-    const rate = () => {
-        if (width>=100){
-            console.log('over 100')
-            clearInterval(interval);
-        } else {
-            width++;
-            chooseBar.style.width = `${width}%`
-        }
-    };
-
-    const interval = setInterval(rate, speed);
-}
 //-------- need to create different interval for energy... needs to go down --//
 
 
@@ -99,25 +69,17 @@ function intervalStartReverse(chooseBar, speed){
 
 
 
-
-// why are the numbers opposite??? isnt higher number supposed to be faster?? need to figure this one
-//----- moving this one to the start function a the bottom ---//
-// intervalStart(boredBar, 5)
-// intervalStart(hungerBar, 1)
-// intervalStartReverse(energyBar, 9)
-
-
 // -------- this is the counter for age function --------//
 const counter  = document.querySelector('#counter')
 
 // let count = 0; //----- maybe move this one to the top.
 function startCount(count){
-setInterval(() => {
-    if (count <= 9){
-        count++;
-        counter.innerText = count;
-    }
-}, 1500); //------ this changes speed of counter..
+    setInterval(() => {
+        if (count <= 9){
+            count++;
+            counter.innerText = count;
+        }
+    }, 1500); //------ this changes speed of counter..
 }
 
 
@@ -131,29 +93,68 @@ const sleepButton = document.querySelector('#sleep');
 
 feedButton.addEventListener('click', () => {
     console.log('clickedTheFeedsAgain');
-    clickAction(hungerBar);
+    resetHunger(); //----testing this one
 })
 
 playButton.onclick = () => {
     console.log('clicked da play');
-    clickAction(boredBar);
+    resetBored();
+    // clickAction(boredBar);
 }
 
 sleepButton.onclick = () => {
     console.log('clicked the sleep');
+    resetEnergy();
     clickActionNegative(energyBar);
 }
 
-const clickAction = (chooseBar) => {
-    const computedStyle = getComputedStyle(chooseBar);
-    const width = parseFloat(computedStyle.getPropertyValue('--width')) || 0;
-    if (width >=0){
-    chooseBar.style.setProperty('--width', width - 10);
-    console.log(width)
-    }
-    console.log(catsHunger)
+//--------------------
+
+
+
+function intervalStartHunger(){
+    hungerBarProgress = setInterval(function () {
+        cat.hunger++;
+        $('#hunger-bar').css('width', cat.hunger +'%');
+        if (cat.hunger >= 100){
+            console.log('this works')
+            //------game over here
+        }
+    }, 100)
 }
 
+function intervalStartBored(){
+    boredBarProgress = setInterval(function () {
+        cat.boredom++;
+        $('#bored-bar').css('width', cat.boredom +'%');
+        if (cat.boredom >= 100){
+            console.log('this bored works')
+            //------game over here
+        }
+    }, 100)
+}
+
+function resetHunger(){
+    cat.hunger =0;
+    clearInterval(hungerBarProgress);
+    $hungerBar.css('width',cat.hunger+'%');
+    intervalStartHunger() // --- test
+    }
+
+
+function resetBored(){
+    cat.boredom =0;
+    clearInterval(boredBarProgress);
+
+    $boredBar.css('width',cat.boredom+'%');
+    intervalStartBored() // --- test
+    }
+    
+    
+  
+//----------------------
+
+//-------
 const clickActionNegative = (chooseBar) => {
     const computedStyle = getComputedStyle(chooseBar);
     const width = parseFloat(computedStyle.getPropertyValue('--width')) || 0;
@@ -164,20 +165,16 @@ const clickActionNegative = (chooseBar) => {
 
 
 
-// catsInfo.name = $('.catsName').val();
-// $('#name-box').text(catsInfo.name);
-
-
-
 
 
 
 function playGame(){
     startCount(0); //-------this one starts the counter,
-    intervalStart(hungerBar, 50)
-    intervalStart(boredBar, 60)
-    intervalStartReverse(energyBar, 80)
-    clearWelcomePage();
+    intervalStartHunger();
+    intervalStartBored();
+    // intervalStart(boredBar, 60);
+    // intervalStartReverse(energyBar, 80);
+    // clearWelcomePage();
 }
 
 const welcomePage = document.querySelector('.welcome-page');
@@ -192,7 +189,6 @@ const gameStartButton = document.querySelector('.gameStartButton')
 //     $('.welcome-page').css('display','none');
 // }
 
-console.log(nameBox)
 
 // gameStartButton.addEventListener('submit', playGame())
 
