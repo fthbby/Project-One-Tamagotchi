@@ -1,7 +1,10 @@
-let catsInfo = {
-    name: '',
-}
+// let catsInfo = {
+//     name: '',
+// }
 
+let cat = {
+    name:'',
+}
 let catsHunger = 0;
 let catsBoredom = 0;
 let catsEnergy = 0;
@@ -144,8 +147,9 @@ console.log(nameBox)
 
 gameStartButton.addEventListener('click', function(e){
     if (e.target.innerText ==='Enter'){
-        // nameBox.innerText = getCatName
-        addNameToGame();
+        cat.name = $('#catName').val();
+        $('#name-box').text(cat.name)
+        // addNameToGame();
         playGame();
     }
 })
@@ -162,12 +166,12 @@ gameStartButton.addEventListener('click', function(e){
 // let nameBox1 = document.querySelector('#name-box')
 // console.log($($nameBox).innerText)
 
-const getCatName = document.getElementById('catName').value;
+// const getCatName = document.getElementById('catName').value;
+// const $getCatName = $('#catName');
 
-
-function addNameToGame(){
-
-    nameBox.innerText = getCatName;
-}
+// function addNameToGame(){
+//     $('#name-box').text(getCatName)
+//     // nameBox.innerText = getCatName;
+// }
 
 console.log(getCatName)
