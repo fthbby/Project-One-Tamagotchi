@@ -106,6 +106,12 @@ sleepButton.onclick = () => {
 
 //--------------------
 
+function gameEnds(){
+    $('#bored-bar').css('width', 0 + '%');
+    $('#hunger-bar').css('width', 0 + '%');
+    $('#energy-bar').css('width', 100 + '%');
+
+}
 
 
 function intervalStartHunger(){
@@ -113,10 +119,11 @@ function intervalStartHunger(){
         cat.hunger++;
         $('#hunger-bar').css('width', cat.hunger +'%');
         if (cat.hunger >= 100){
-            console.log('this works')
+            console.log('this hungerBar works')
+            resetHunger();
             clearInterval(hungerBarProgress);
-            cat.hunger = 0;
-
+            gameEnds();
+            showLoserPage();
             //------game over here
         }
     }, 100)
@@ -129,7 +136,7 @@ function intervalStartBored(){
         if (cat.boredom >= 100){
             console.log('this bored works')
             clearInterval(boredBarProgress);
-            cat.bored =0;
+            gameEnds();
             showLoserPage();
             //------game over here
         }
@@ -141,13 +148,11 @@ function intervalStartEnergy(){
         cat.energy--;
         $('#energy-bar').css('width', cat.energy+'%');
         if (cat.energy <= 0){
-            console.log('this energy. works')
-            //------game over here
-            // cat.energy = 1;
-            clearInterval(intervalStartEnergy)
-            clearInterval(intervalStartHunger)
-            clearInterval(intervalStartBored)
+            console.log('this energy. works');
+           resetEnergy();
             clearInterval(energyBarProgress);
+            gameEnds();
+            showLoserPage();
 
         }
     }, 100)
@@ -204,9 +209,9 @@ function playGame(){
     clearWelcomePage();
 }
 
-const welcomePage = document.querySelector('.welcome-page');
+// const welcomePage = document.querySelector('.welcome-page');
 // const welcomeStart = document.querySelector('.welcome-start')
-const nameBox = document.querySelector('#name-box');
+// const nameBox = document.querySelector('#name-box');
 const catName = document.querySelector('#catName');
 const gameStartButton = document.querySelector('.gameStartButton')
 
@@ -216,6 +221,11 @@ function clearWelcomePage(){
     $('.welcome-page').css('display','none');
 }
 
+function showWelcomePage(){
+    $('.welcome-page').css('display','flex');
+    gameEnds();
+
+}
 function clearLoserPage() {
     $('.loser-page').css('display','none');
 }
@@ -231,9 +241,9 @@ gameStartButton.addEventListener('click', function(e){
         cat.name = $('#catName').val();
         $('#name-box').text(cat.name)
         // addNameToGame();
-        clearInterval(intervalStartEnergy)
-        clearInterval(intervalStartHunger)
-        clearInterval(intervalStartBored)
+        // clearInterval(intervalStartEnergy)
+        // clearInterval(intervalStartHunger)
+        // clearInterval(intervalStartBored)
         playGame();
     }
 })
@@ -244,12 +254,19 @@ console.log(tryAgainButton)
 
 tryAgainButton.addEventListener('click', function(e){
     if (e.target.innerText =='Try'){
-        console.log('thisclick works tho');
+        // console.log('thisclick works tho');
+        // gameEnds();
         clearLoserPage();
-        $('.welcome-page').css('display','flex');
-        clearInterval(intervalStartEnergy)
-        clearInterval(intervalStartHunger)
-        clearInterval(intervalStartBored)
+        $('body').css('visibility','hidden');
+        location.reload();
+        return false;
+        // showWelcomePage();
+        // // $('.welcome-page').css('display','flex');
+        // clearInterval(intervalStartEnergy)
+        // clearInterval(intervalStartHunger)
+        // clearInterval(intervalStartBored)
+        
+
 
     }
 }
