@@ -73,13 +73,29 @@ function intervalStart(chooseBar, speed){
 }
 //-------- need to create different interval for energy... needs to go down --//
 
-function intervalStartReverse (chooseBar, interval){
-    setInterval(() => {
-        const computedStyle = getComputedStyle(chooseBar);
-        const width = parseFloat(computedStyle.getPropertyValue('--width'));
-        chooseBar.style.setProperty('--width',width -.05)
-    }, (interval));
+
+function intervalStartReverse(chooseBar, speed){
+    let width = 90;
+    const rate = () => {
+        if (width<=0){
+            console.log('under 0')
+            clearInterval(interval);
+        } else {
+            width--;
+            chooseBar.style.width = `${width}%`
+        }
+    };
+
+    const interval = setInterval(rate, speed);
 }
+
+// function intervalStartReverse (chooseBar, interval){
+//     setInterval(() => {
+//         const computedStyle = getComputedStyle(chooseBar);
+//         const width = parseFloat(computedStyle.getPropertyValue('--width'));
+//         chooseBar.style.setProperty('--width',width -.05)
+//     }, (interval));
+// }
 
 
 
@@ -160,7 +176,7 @@ function playGame(){
     startCount(0); //-------this one starts the counter,
     intervalStart(hungerBar, 50)
     intervalStart(boredBar, 60)
-    intervalStartReverse(energyBar, 9)
+    intervalStartReverse(energyBar, 80)
     clearWelcomePage();
 }
 
