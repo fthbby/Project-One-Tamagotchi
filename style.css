@@ -79,7 +79,14 @@ justify-content: space-around;
     position: absolute;
     bottom: 30%;
     right: 35%;
-    
+    /* animation: fadeOut 2s;
+  	opacity: 0; */
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
 }
 
 .catHead {

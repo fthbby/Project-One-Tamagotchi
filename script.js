@@ -254,3 +254,10 @@ $playAgainButton.on('click', function(e){
 }
 )
 
+
+//------ attempt to create transform function
+
+function transformCat(){
+    $('.cat').css('animation','fadeOut 2s');
+    $('.cat').css('opacity','0');
+}
