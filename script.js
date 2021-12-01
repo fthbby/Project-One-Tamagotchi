@@ -33,7 +33,10 @@ function startCount(){
     countProgress = setInterval(()=>{
     cat.count++;
     counter.innerText = cat.count;
-        if (cat.count >= 10){ //------ change timer here
+        if (cat.count >=15){
+            transformCat()
+        }
+        if (cat.count >= 30){ //------ change timer here
             console.log('winner!')
             showWinnerPage();
             gameEnds();
@@ -57,7 +60,6 @@ feedButton.addEventListener('click', () => {
     console.log('clickedTheFeedsAgain');
     catEatSound();
     resetHunger(); 
-    transformCat();
     
 })
 
