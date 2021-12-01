@@ -23,6 +23,11 @@ let hungerBarProgress = '';
 let boredBarProgress= '';
 let energyBarProgress= '';
 
+let catStartSound =()=> new Audio('audio/catStartSound.mp3').play();
+let catSadSound =()=> new Audio('audio/catSadSound.mp3').play();
+let catPurrSound =()=>new Audio('audio/catPurrSound.mp3').play();
+let catEatSound =()=> new Audio('audio/catEatSound.mp3').play();
+let catPlaySound =()=> new Audio('audio/catPlaySound.mp3').play();
 
 function startCount(){
     countProgress = setInterval(()=>{
@@ -50,16 +55,20 @@ const sleepButton = document.querySelector('#sleep');
 
 feedButton.addEventListener('click', () => {
     console.log('clickedTheFeedsAgain');
+    catEatSound();
     resetHunger(); 
+    
 })
 
 playButton.onclick = () => {
     console.log('clicked da play');
+    catPlaySound();
     resetBored();
 }
 
 sleepButton.onclick = () => {
     console.log('clicked the sleep');
+    catPurrSound();
     resetEnergy();
 }
 
@@ -140,6 +149,7 @@ function resetEnergy(){
 //-------------PLAY THE GAME -------------------//
 
 function playGame(){
+    catStartSound();
     startCount(0); //-------this one starts the counter,
     intervalStartHunger();
     intervalStartBored();
@@ -198,6 +208,7 @@ function clearLoserPage() {
     $('.loser-page').css('display','none');
 }
 function showLoserPage() { //------need to review this one....
+    catSadSound();
     $('.loser-page').css('display','flex');
     $('.winner-page').css('display','none');
     $('.winner-page').css('visbility','hidden');

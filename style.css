@@ -253,6 +253,15 @@ justify-content: space-around;
     max-width:100px;
 }
 
+#actionText {
+    font-family: 'Cute Font', cursive;
+    border-style: dotted;
+    padding-right: 15px;
+    padding-left: 15px;
+    font-size: 25px;
+    background-color: peachpuff;
+
+}
 .stats-box{
     position: relative;
     width: 400px;
@@ -370,7 +379,7 @@ p {
     background-color: peachpuff;
 }
 
-/* .welcome-page {
+.welcome-page {
     position: absolute;
     z-index: 1;
     height: 100%;
@@ -381,7 +390,7 @@ p {
     background-color: lightgreen;
     text-align: center;
     font-size: 30px;
-}  */
+} 
 
 
 .loser-page {
