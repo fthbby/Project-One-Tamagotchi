@@ -57,6 +57,7 @@ feedButton.addEventListener('click', () => {
     console.log('clickedTheFeedsAgain');
     catEatSound();
     resetHunger(); 
+    transformCat();
     
 })
 
@@ -260,4 +261,6 @@ $playAgainButton.on('click', function(e){
 function transformCat(){
     $('.cat').css('animation','fadeOut 2s');
     $('.cat').css('opacity','0');
+    $('.cat2').css('animation','fadeIn 8s')
+    $('.cat2').css('display','inline');
 }
