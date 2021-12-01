@@ -89,7 +89,7 @@ function intervalStartHunger(){
             showLoserPage();
             //------game over here
         }
-    }, 100)
+    }, 125)
 }
 
 function intervalStartBored(){
@@ -103,7 +103,7 @@ function intervalStartBored(){
             // showLoserPage();
             //------game over here
         }
-    }, 50)
+    }, 100)
 }
 
 function intervalStartEnergy(){
@@ -117,7 +117,7 @@ function intervalStartEnergy(){
             showLoserPage();
 
         }
-    }, 100)
+    }, 150)
 }
 
 
