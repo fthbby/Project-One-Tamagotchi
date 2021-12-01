@@ -1,7 +1,9 @@
 
 body {
-    background-color: lightgreen;
+    /* background-color: lightgreen; */
     font-family: 'Cute Font', cursive;
+    background-image: url("images/background.jpeg");
+    background-size: cover;
 }
 
 
@@ -12,7 +14,7 @@ justify-content: space-around;
 
 .container2 {
     left: 20px;
-    background-color: lightgreen;
+    /* background-color: lightgreen; */
     display: flex;
     position:relative;
     width: 100%;
@@ -60,6 +62,7 @@ justify-content: space-around;
 #age {
     margin-left: 10px;
 } */
+
 
 #name-box {
     flex: 2;
@@ -263,10 +266,7 @@ justify-content: space-around;
 /* ---------end of cat-------------------- */
 
 
-/* #stats-box {
-    flex: 2;
-    border-color: pink;
-} */
+
 
 #action-box img{
     width:100%;
@@ -418,7 +418,7 @@ body {
     color:white;
 } */
 
-#bored-bar-progress{
+/* #bored-bar-progress{
     display: flex;
     align-items: center;
     position: absolute;
@@ -432,7 +432,7 @@ body {
     border-radius: 1.5em;
     padding: .4em;
     font-size: 30px;
-}
+} */
 
 /* #energy-bar {
     position: relative;
@@ -459,12 +459,38 @@ body {
     font-size: 30px;
 } */
 
-#energy-bar{
-    width: 100%; 
+#energy-bar{ 
+    width: 100%; /* this starts at 100 because the cat starts with full energy */
     max-width: calc(100% -.3em);
 }
 
+h1 {
+    border-style: dotted;
+    background-color: lightgrey;
+}
 
+p {
+    margin-top: 0px;
+}
+
+#catName {
+    height:2em;
+    border-style: dotted;
+    font-size: 20px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.welcome-start {
+    font-size: 30px;
+    font-weight: bolder;
+}
+
+.gameStartButton {
+    font-size: 20px;;
+    border-style: dotted;
+    padding: .3em;
+    background-color: peachpuff;
+}
 
 
 
@@ -478,6 +504,7 @@ body {
     justify-content: center;
     background-color: lightgreen;
     text-align: center;
+    font-size: 30px;
 }
 
 
@@ -491,6 +518,8 @@ body {
     justify-content: center;
     background-color: lightgreen;
     text-align: center;
+    font-size: 30px;
+
 }
 
 
@@ -505,4 +534,6 @@ body {
     justify-content: center;
     background-color: lightgreen;
     text-align: center;
+    font-size: 30px;
+
 } ;

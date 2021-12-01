@@ -16,11 +16,18 @@
 </head>
 <body>
    <div class="welcome-page">
-        <h1>Welcome to cat Tomagatchi!</h1>
-        <p>Keep your cat fed, make sure he doesnt get too bored, and don't let his energy run low!<br>
-        Keep your cat happy until 10 and you win!
+        <h1>Welcome to Cat Tomagatchi!</h1>
+        <p>So you want to adopt a cat.... first you have to show you can take care of one!
         <br>
-        Name your cat to begin!
+        <span id ='instructions'>How to play instructions: <br>
+        1. Keep your cat fed<br>
+        2. Play with him so he doesn't get bored<br>
+        3. Put him to sleep... don't let him get exhausted!<br>
+        </span>
+        Keep your cat happy for 15 days and you get to keep him!
+        <br>
+        <br>
+        Name your foster cat to begin!
         </p>
         <form class ='welcome-start'>
             <label for ='name'>Name:</label>
@@ -29,29 +36,11 @@
         </form>
     </div>
 
-<!-- 
-    <div class="loser-page">
-        <form class ='try-again'>
-        <h1>Oh, no! Your cat ran away!</h1>
-        <p>You couldn't keep up with his needs. Do you want adopt another and try again? </p>
-        <br>
-        Click enter to try again!
-        <button class='playAgainButton' type ='button'>Play again!</button>
-        </form>
-    </div>
 
-    <div class="winner-page">
-        <form class ='try-again'>
-        <h1> Yay!! You kept your cat happy for 10 good years! </h1>
-        <p>Since you're such a good cat owner, you can adopt another cat. 
-        Click to play again! </p>
-        <button class='playAgainButton' type ='button'>Play again!</button>
-    </form>
-    </div>   -->
 
     
     <div class="loser-page">
-        <form class ='try-again'>
+        <form class ='play-again'>
         <h1>Oh, no! Your cat ran away!</h1>
         <p>You couldn't keep up with his needs. Do you want adopt another and try again? </p>
         <br>
@@ -61,9 +50,9 @@
     </div>
 
     <div class="winner-page">
-        <form class ='try-again'>
+        <form class ='play-again'>
         <h1> Yay!! You kept your cat happy for 10 good years! </h1>
-        <p>Since you're such a good cat owner, you can adopt another cat. 
+        <p>Since you're such a good cat owner, you can foster to adopt another cat.
         Click to play again! </p>
         <button class='playAgainButton' type ='button'>Play again!</button>
     </form>
@@ -112,6 +101,7 @@
         <div class = catContainer> 
            <div class ='cat'>
                <div class="catHead"></div> 
+               <div class="whisker"></div>
                 <div class ='ear'></div>
                 <div class="earInside"></div>
                 <div class="eye"></div>

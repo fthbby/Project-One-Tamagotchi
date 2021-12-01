@@ -1,5 +1,5 @@
 
-
+//-------Cat Stats----------//
 let cat = {
     name:'',
     hunger: 0,
@@ -8,11 +8,12 @@ let cat = {
     count: 0,
     
 }
-// let countProgress = 0;
 
 const boredBar = document.getElementById('bored-bar-progress');
 const energyBar = document.getElementById('energy-bar-progress');
 const hungerBar = document.getElementById('hunger-bar');
+const counter  = document.querySelector('#counter')
+
 
 const $hungerBar = $('#hunger-bar');
 const $boredBar = $('#bored-bar');
@@ -23,14 +24,11 @@ let boredBarProgress= '';
 let energyBarProgress= '';
 
 
-// -------- this is the counter for age function --------//
-const counter  = document.querySelector('#counter')
-
 function startCount(){
     countProgress = setInterval(()=>{
     cat.count++;
     counter.innerText = cat.count;
-        if (cat.count >= 10){ //------ change timer here
+        if (cat.count >= 2){ //------ change timer here
             console.log('winner!')
             showWinnerPage();
             gameEnds();
@@ -113,7 +111,7 @@ function intervalStartEnergy(){
         $('#energy-bar').css('width', cat.energy+'%');
         if (cat.energy <= 0){
             console.log('this energy. works');
-           resetEnergy();
+            resetEnergy();
             clearInterval(energyBarProgress);
             gameEnds();
             showLoserPage();
@@ -149,19 +147,7 @@ function resetEnergy(){
     
 
 
-//-------
-const clickActionNegative = (chooseBar) => {
-    const computedStyle = getComputedStyle(chooseBar);
-    const width = parseFloat(computedStyle.getPropertyValue('--width')) || 0;
-    if (width >=0){
-    chooseBar.style.setProperty('--width', width + 10);
-    }
-}
-
-
-
 function playGame(){
-    // clearLoserPage();
     startCount(0); //-------this one starts the counter,
     intervalStartHunger();
     intervalStartBored();
@@ -188,18 +174,18 @@ function clearLoserPage() {
     $('.loser-page').css('display','none');
 }
 function showLoserPage() {
-    $('.loser-page').css('display','inline');
+    $('.loser-page').css('display','flex');
     $('.winner-page').css('display','none');
-    $('.try-again').css('display','inline')
+    // $('.try-again').css('display','inline')
 
 
 }
 
 
 function showWinnerPage(){
-    $('#playAgainButton').css('display','flex')
+    // $('#playAgainButton').css('display','flex')
 
-    $('.winner-page').css('display','inline');
+    $('.winner-page').css('display','flex');
     $('.loser-page').css('display','none');
     clearWelcomePage();
     clearInterval(hungerBarProgress);
@@ -235,6 +221,7 @@ $playAgainButton.on('click', function(e){
         clearWinnerPage();
         clearLoserPage();
         $('body').css('visibility','hidden');
+        $('body').css('background-image','none')
         location.reload();
         // return false;
 
