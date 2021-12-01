@@ -5,8 +5,10 @@ let cat = {
     hunger: 0,
     boredom: 0,
     energy: 100,
+    count: 0,
+    
 }
-
+let countProgress = 0;
 
 const boredBar = document.getElementById('bored-bar-progress');
 const energyBar = document.getElementById('energy-bar-progress');
@@ -21,64 +23,40 @@ let boredBarProgress= '';
 let energyBarProgress= '';
 
 
-//------this is the stats bars interval codes-------//
-
-// function intervalStart(chooseBar, speed){
-//     let width = 1;
-//     const rate = () => {
-//         if (width>=100){
-//             console.log('over 100')
-//             clearInterval(interval);
-//         } else {
-//             width++;
-//             chooseBar.style.width = `${width}%`
-//         }
-//     };
-
-//     const interval = setInterval(rate, speed);
-// }
-//-------- need to create different interval for energy... needs to go down --//
-
-
-function intervalStartReverse(chooseBar, speed){
-    let width = 90;
-    const rate = () => {
-        if (width<=0){
-            console.log('under 0')
-            clearInterval(interval);
-        } else {
-            width--;
-            chooseBar.style.width = `${width}%`
-        }
-    };
-
-    const interval = setInterval(rate, speed);
-}
-
-// function intervalStartReverse (chooseBar, interval){
-//     setInterval(() => {
-//         const computedStyle = getComputedStyle(chooseBar);
-//         const width = parseFloat(computedStyle.getPropertyValue('--width'));
-//         chooseBar.style.setProperty('--width',width -.05)
-//     }, (interval));
-// }
-
-
-
 // -------- this is the counter for age function --------//
 const counter  = document.querySelector('#counter')
 
-// let count = 0; //----- maybe move this one to the top.
-function startCount(count){
-    setInterval(() => {
-        if (count <= 9){
-            count++;
-            counter.innerText = count;
+function startCount(){
+    countProgress = setInterval(()=>{
+    cat.count++;
+    counter.innerText = cat.count;
+        if (cat.count >= 10){
+            console.log('winner!')
+            clearInterval(countProgress)
         }
     }, 1500); //------ this changes speed of counter..
+    
 }
+// document.addEventListener('click',function(){
+//     console.log(count)
+// })
 
 
+//------- use as test
+function intervalStartHunger(){
+    hungerBarProgress = setInterval(function () {
+        cat.hunger++;
+        $('#hunger-bar').css('width', cat.hunger +'%');
+        if (cat.hunger >= 100){
+            console.log('this hungerBar works')
+            // resetHunger();
+            clearInterval(hungerBarProgress);
+            gameEnds();
+            showLoserPage();
+            //------game over here
+        }
+    }, 100)
+}
 
 //----------below are the event listeners for the action buttons
 
@@ -113,6 +91,7 @@ function gameEnds(){
 
 }
 
+//------this is the stats bars interval codes-------//
 
 function intervalStartHunger(){
     hungerBarProgress = setInterval(function () {
@@ -120,7 +99,7 @@ function intervalStartHunger(){
         $('#hunger-bar').css('width', cat.hunger +'%');
         if (cat.hunger >= 100){
             console.log('this hungerBar works')
-            resetHunger();
+            // resetHunger();
             clearInterval(hungerBarProgress);
             gameEnds();
             showLoserPage();
@@ -176,15 +155,14 @@ function resetBored(){
     }
     
 
-    function resetEnergy(){
-        cat.energy = 100;
-        clearInterval(energyBarProgress);
-        $('#energy-bar').css('width',cat.energy+'%');
-        intervalStartEnergy();
+function resetEnergy(){
+    cat.energy = 100;
+    clearInterval(energyBarProgress);
+    $('#energy-bar').css('width',cat.energy+'%');
+    intervalStartEnergy();
     }
     
-  
-//----------------------
+
 
 //-------
 const clickActionNegative = (chooseBar) => {
@@ -201,7 +179,7 @@ console.log($('.loser-page'))
 
 
 function playGame(){
-    clearLoserPage();
+    // clearLoserPage();
     startCount(0); //-------this one starts the counter,
     intervalStartHunger();
     intervalStartBored();
@@ -233,6 +211,10 @@ function showLoserPage() {
     $('.loser-page').css('display','inline');
 }
 
+
+function showWinnerPage(){
+    $('.winner-page').css('display','inline')
+}
 // gameStartButton.addEventListener('submit', playGame())
 
 
@@ -248,23 +230,17 @@ gameStartButton.addEventListener('click', function(e){
     }
 })
 
-const tryAgainButton = document.querySelector('.tryAgainButton')
+const playAgainButton = document.querySelector('.playAgainButton')
 
-console.log(tryAgainButton)
+console.log(playAgainButton)
 
-tryAgainButton.addEventListener('click', function(e){
-    if (e.target.innerText =='Try'){
-        // console.log('thisclick works tho');
-        // gameEnds();
+playAgainButton.addEventListener('click', function(e){
+    if (e.target.innerText =='Try again!'){
+
         clearLoserPage();
         $('body').css('visibility','hidden');
         location.reload();
         return false;
-        // showWelcomePage();
-        // // $('.welcome-page').css('display','flex');
-        // clearInterval(intervalStartEnergy)
-        // clearInterval(intervalStartHunger)
-        // clearInterval(intervalStartBored)
         
 
 
