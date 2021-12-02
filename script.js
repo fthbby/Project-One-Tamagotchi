@@ -227,19 +227,13 @@ function showLoserPage() { //------need to review this one....
 
 
 gameStartButton.addEventListener('click', function(e){
-    if (e.target.innerText =='Enter'){
+    if (e.target.innerText =='Play'){
         cat.name = $('#catName').val();
-        $('#name-box').text(cat.name)
-        // $('.try-again').css('display','none')
-        // addNameToGame();
-        // clearInterval(intervalStartEnergy)
-        // clearInterval(intervalStartHunger)
-        // clearInterval(intervalStartBored)
+        $('#name-box').text(cat.name);
         playGame();
     }
 })
 
-// const playAgainButton = document.querySelector('.playAgainButton')
 const $playAgainButton = $('.playAgainButton')
 
 $playAgainButton.on('click', function(e){
