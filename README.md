@@ -5,6 +5,7 @@ Objective: Create a working game using HTML, CSS, JS, and JQuery
 
 Wireframe:
 
+![Image 12-1-21 at 4 07 PM](https://user-images.githubusercontent.com/47613870/144337598-038c62a0-6761-4073-9146-71af9b7c2c38.jpg)
 
 
 User Stories:
