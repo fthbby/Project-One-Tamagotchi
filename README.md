@@ -1,6 +1,8 @@
 # Project-One-Tamagotchi
 
 
+[Click here to play](https://fthbby.github.io/)
+
 Objective: Create a working game using HTML, CSS, JS, and JQuery
 
 #Wireframe:
