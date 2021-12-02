@@ -1,33 +1,32 @@
 
-//-------Cat Stats----------//
+//-------Cat Stats & Game Variables----------//
 let cat = {
     name:'',
     hunger: 0,
     boredom: 0,
     energy: 100,
     count: 0,
-    
 }
 
-const boredBar = document.getElementById('bored-bar-progress');
-const energyBar = document.getElementById('energy-bar-progress');
-const hungerBar = document.getElementById('hunger-bar');
 const counter  = document.querySelector('#counter')
+const feedButton =document.querySelector('#feed');
+const playButton = document.querySelector('#play');
+const sleepButton = document.querySelector('#sleep');
 
-
-const $hungerBar = $('#hunger-bar');
-const $boredBar = $('#bored-bar');
-const $energyBar = $('#energy-bar');
 
 let hungerBarProgress = '';
 let boredBarProgress= '';
 let energyBarProgress= '';
+
+//------- Audio Clips----------------//
 
 let catStartSound =()=> new Audio('audio/catStartSound.mp3').play();
 let catSadSound =()=> new Audio('audio/catSadSound.mp3').play();
 let catPurrSound =()=>new Audio('audio/catPurrSound.mp3').play();
 let catEatSound =()=> new Audio('audio/catEatSound.mp3').play();
 let catPlaySound =()=> new Audio('audio/catPlaySound.mp3').play();
+
+//-----------------------------------//
 
 function startCount(){
     countProgress = setInterval(()=>{
@@ -45,37 +44,45 @@ function startCount(){
     }, 1500); //------ this changes speed of counter..
     
 }
-// document.addEventListener('click',function(){
-//     console.log(count)
-// })
 
-//----------below are the event listeners for the action buttons
 
-const feedButton =document.querySelector('#feed');
-const playButton = document.querySelector('#play');
-const sleepButton = document.querySelector('#sleep');
-
+//---------Event Listeners---------------//
 
 feedButton.addEventListener('click', () => {
-    console.log('clickedTheFeedsAgain');
     catEatSound();
     resetHunger(); 
-    
 })
 
 playButton.onclick = () => {
-    console.log('clicked da play');
     catPlaySound();
     resetBored();
 }
 
 sleepButton.onclick = () => {
-    console.log('clicked the sleep');
     catPurrSound();
     resetEnergy();
 }
 
+$('.gameStartButton').on('click', function(e){
+    if (e.target.innerText =='Play'){
+        cat.name = $('#catName').val();
+        $('#name-box').text(cat.name);
+        playGame();
+    }
+})
 
+
+$('.playAgainButton').on('click', function(e){
+    if (e.target.innerText =='Play again!'){
+        e.preventDefault();
+        clearWinnerPage();
+        clearLoserPage();
+        $('body').css('visibility','hidden');
+        $('body').css('background-image','none')
+        location.reload();
+
+    }
+})
 
 //------this is the stats bars interval codes-------//
 
@@ -84,10 +91,8 @@ function intervalStartHunger(){
         cat.hunger++;
         $('#hunger-bar').css('width', cat.hunger +'%');
         if (cat.hunger >= 100){
-            console.log('this hungerBar works');
             gameEnds();
             showLoserPage();
-            //------game over here
         }
     }, 125)
 }
@@ -97,11 +102,8 @@ function intervalStartBored(){
         cat.boredom++;
         $('#bored-bar').css('width', cat.boredom +'%');
         if (cat.boredom >= 100){
-            console.log('this bored works');
             gameEnds();
             showLoserPage();
-            // showLoserPage();
-            //------game over here
         }
     }, 100)
 }
@@ -111,15 +113,11 @@ function intervalStartEnergy(){
         cat.energy--;
         $('#energy-bar').css('width', cat.energy+'%');
         if (cat.energy <= 0){
-            console.log('this energy. works');
-            // resetEnergy();
             gameEnds();
             showLoserPage();
-
         }
     }, 150)
 }
-
 
 
 //------------ resetting functions ---------------//
@@ -127,20 +125,17 @@ function intervalStartEnergy(){
 function resetHunger(){
     cat.hunger =0;
     clearInterval(hungerBarProgress);
-    $hungerBar.css('width',cat.hunger+'%');
+    $('#hunger-bar').css('width',cat.hunger+'%');
     intervalStartHunger() // --- test
     }
-
 
 function resetBored(){
     cat.boredom =0;
     clearInterval(boredBarProgress);
-
-    $boredBar.css('width',cat.boredom+'%');
+    $('#bored-bar').css('width',cat.boredom+'%');
     intervalStartBored() // --- test
     }
     
-
 function resetEnergy(){
     cat.energy = 100;
     clearInterval(energyBarProgress);
@@ -148,34 +143,6 @@ function resetEnergy(){
     intervalStartEnergy();
     }
     
-
-//-------------PLAY THE GAME -------------------//
-
-function playGame(){
-    catStartSound();
-    startCount(0); //-------this one starts the counter,
-    intervalStartHunger();
-    intervalStartBored();
-    intervalStartEnergy();
-    clearWelcomePage();
-}
-
-
-//--------------------GAME ENDS-------------//
-
-function gameEnds(){
-    clearInterval(hungerBarProgress);
-    clearInterval(energyBarProgress);
-    clearInterval(boredBarProgress);
-    $('#bored-bar').css('width', 0 + '%');
-    $('#hunger-bar').css('width', 0 + '%');
-    $('#energy-bar').css('width', 100 + '%');
-
-}
-
-
-const catName = document.querySelector('#catName');
-const gameStartButton = document.querySelector('.gameStartButton')
 
 //------WELCOME page functions-------------//
 
@@ -192,13 +159,10 @@ function showWelcomePage(){
 
 function showWinnerPage(){
     $('.winner-page').css('display','flex');
-    $('.loser-page').css('display','none');
+    clearLoserPage();
     clearWelcomePage();
+    catStartSound()
     gameEnds();
-    // clearInterval(hungerBarProgress);
-    // clearInterval(energyBarProgress);
-    // clearInterval(boredBarProgress);
-
 }
 
 function clearWinnerPage(){
@@ -210,53 +174,49 @@ function clearWinnerPage(){
 function clearLoserPage() {
     $('.loser-page').css('display','none');
 }
+
 function showLoserPage() { //------need to review this one....
     catSadSound();
     $('.loser-page').css('display','flex');
-    $('.winner-page').css('display','none');
-    $('.winner-page').css('visbility','hidden');
-
+    clearWinnerPage();
     clearWelcomePage();
     gameEnds();
     clearInterval(hungerBarProgress);
     clearInterval(energyBarProgress);
     clearInterval(boredBarProgress);
-
+    //------have to clear interval twice for some reason or it will repeat the winning page------//
 }
 
 
-
-gameStartButton.addEventListener('click', function(e){
-    if (e.target.innerText =='Play'){
-        cat.name = $('#catName').val();
-        $('#name-box').text(cat.name);
-        playGame();
-    }
-})
-
-const $playAgainButton = $('.playAgainButton')
-
-$playAgainButton.on('click', function(e){
-    if (e.target.innerText =='Play again!'){
-        e.preventDefault();
-        console.log('clickie')
-        clearWinnerPage();
-        clearLoserPage();
-        $('body').css('visibility','hidden');
-        $('body').css('background-image','none')
-        location.reload();
-        // return false;
-
-    }
-}
-)
-
-
-//------ attempt to create transform function
 
 function transformCat(){
     $('.cat').css('animation','fadeOut 2s');
     $('.cat').css('opacity','0');
     $('.cat2').css('animation','fadeIn 8s')
     $('.cat2').css('display','inline');
+}
+
+
+//--------------------GAME ENDS-------------//
+
+function gameEnds(){
+    clearInterval(hungerBarProgress);
+    clearInterval(energyBarProgress);
+    clearInterval(boredBarProgress);
+    $('#bored-bar').css('width', 0 + '%');
+    $('#hunger-bar').css('width', 0 + '%');
+    $('#energy-bar').css('width', 100 + '%');
+
+}
+
+
+//-------------PLAY THE GAME -------------------//
+
+function playGame(){
+    catStartSound();
+    startCount(); //-------this one starts the counter,
+    intervalStartHunger();
+    intervalStartBored();
+    intervalStartEnergy();
+    clearWelcomePage();
 }

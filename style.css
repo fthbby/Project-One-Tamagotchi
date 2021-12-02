@@ -79,9 +79,6 @@ justify-content: space-around;
     position: absolute;
     bottom: 30%;
     right: 35%;
-    /* animation: fadeOut 2s;
-  	opacity: 0; */
-
     
 }
 
@@ -106,7 +103,6 @@ justify-content: space-around;
     bottom: 100px;
     right: 90px;
 }
-
 
 .ear {
     height: 18px;
@@ -458,32 +454,9 @@ justify-content: space-around;
     bottom: 10px;
 }
 
-/* #bar-text {
-    font-size: 36px;
-
-
-} */
-
-/* #hunger-bar-progress{
-    display: flex;
-    align-items: center;
-    position: absolute;
-    left: .13em;
-    top: .13em;
-    bottom: .3em;
-    width: 1%; 
-    min-width: .1rem;
-    max-width: calc(100% - .3em);
-    background-color: pink;
-    border-radius: 1.5em;
-    padding: .4em;
-    font-size: 30px;
-} */
-
 
 .button {
     background-color: Transparent;
-    /* background-repeat:no-repeat; */
     border: none;  
 }
 
@@ -563,7 +536,6 @@ p {
     background-color: lightgreen;
     text-align: center;
     font-size: 30px;
-
 }
 
 
@@ -579,5 +551,4 @@ p {
     background-color: lightgreen;
     text-align: center;
     font-size: 30px;
-
 } ;

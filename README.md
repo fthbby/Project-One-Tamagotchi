@@ -20,9 +20,8 @@ Game Page:
 - As a user, I want to see the age of my cat
 - As a user, I want to be able to see my cat transform as time goes on
 
-Win or Lose page:
+Win/Lose page:
 - As a user, I want to be able to play again if I win or lose
-
 
 
 
